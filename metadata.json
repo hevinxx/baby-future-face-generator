@@ -1,0 +1,5 @@
+{
+  "name": "Baby Future Face Generator",
+  "description": "Upload photos of parents and a baby to generate images of the child's potential appearance at different ages using AI.",
+  "requestFramePermissions": []
+}
