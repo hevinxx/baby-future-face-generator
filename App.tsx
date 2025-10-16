@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { ImageUploader } from './components/ImageUploader';
@@ -6,6 +5,7 @@ import { ResultCard } from './components/ResultCard';
 import { generateFutureLooks } from './services/geminiService';
 import type { ImageFile, GeneratedImage } from './types';
 import { DEFAULT_TARGET_AGES } from './constants';
+import { t } from './i18n';
 
 const App: React.FC = () => {
   const [motherPhoto, setMotherPhoto] = useState<ImageFile | null>(null);
@@ -24,7 +24,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     setGeneratedImages(validTargetAges.map(age => ({ age, src: null })));
-  }, [targetAges]);
+  }, [validTargetAges]);
 
   const handleImageUpload = (setter: React.Dispatch<React.SetStateAction<ImageFile | null>>) => 
     (file: File) => {
@@ -58,16 +58,16 @@ const App: React.FC = () => {
 
   const handleSubmit = useCallback(async () => {
     if (!motherPhoto || !fatherPhoto || !babyPhoto) {
-      setError("모든 사진을 업로드해주세요.");
+      setError(t('errorAllPhotos'));
       return;
     }
     const parsedCurrentAge = parseInt(currentAge, 10);
     if (isNaN(parsedCurrentAge) || parsedCurrentAge < 0) {
-      setError("아기의 현재 나이를 올바르게 입력해주세요.");
+      setError(t('errorCurrentAge'));
       return;
     }
     if (validTargetAges.length === 0) {
-        setError("하나 이상의 유효한 미래 나이를 입력해주세요.");
+        setError(t('errorTargetAge'));
         return;
     }
 
@@ -80,7 +80,7 @@ const App: React.FC = () => {
       setGeneratedImages(images);
     } catch (err) {
       console.error(err);
-      setError("이미지 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      setError(t('errorGeneric'));
     } finally {
       setIsLoading(false);
     }
@@ -132,37 +132,43 @@ const App: React.FC = () => {
     document.body.removeChild(link);
   }, [generatedImages, allImagesGenerated]);
 
+  const genderMap = {
+    'Unspecified': t('genderUnspecified'),
+    'Male': t('genderMale'),
+    'Female': t('genderFemale')
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
       <Header />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           <section id="upload-section" className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-200 mb-10">
-            <h2 className="text-2xl font-bold text-slate-700 mb-2">가족 사진 업로드</h2>
-            <p className="text-slate-500 mb-6">엄마, 아빠, 아기의 사진을 각각 업로드해주세요.</p>
+            <h2 className="text-2xl font-bold text-slate-700 mb-2">{t('uploadFamilyPhotos')}</h2>
+            <p className="text-slate-500 mb-6">{t('uploadFamilyPhotosDesc')}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <ImageUploader 
-                label="엄마 사진" 
+                label={t('motherPhoto')} 
                 onImageUpload={handleImageUpload(setMotherPhoto)} 
                 preview={motherPhoto?.base64 || null}
               />
               <ImageUploader 
-                label="아빠 사진" 
+                label={t('fatherPhoto')} 
                 onImageUpload={handleImageUpload(setFatherPhoto)}
                 preview={fatherPhoto?.base64 || null}
               />
               <ImageUploader 
-                label="아기 사진" 
+                label={t('babyPhoto')} 
                 onImageUpload={handleImageUpload(setBabyPhoto)}
                 preview={babyPhoto?.base64 || null}
               />
             </div>
             
             <div className="mt-8 border-t border-slate-200 pt-6">
-                <h3 className="text-xl font-bold text-slate-700 mb-4">아이 정보 입력</h3>
+                <h3 className="text-xl font-bold text-slate-700 mb-4">{t('childInfo')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label className="block text-sm font-medium text-slate-600 mb-2">성별</label>
+                        <label className="block text-sm font-medium text-slate-600 mb-2">{t('gender')}</label>
                         <div className="flex items-center space-x-4">
                             {(['Unspecified', 'Male', 'Female'] as const).map((g) => (
                                 <label key={g} className="flex items-center space-x-2 cursor-pointer">
@@ -174,13 +180,13 @@ const App: React.FC = () => {
                                         onChange={() => setGender(g)}
                                         className="h-4 w-4 text-indigo-600 border-slate-300 focus:ring-indigo-500"
                                     />
-                                    <span>{{'Unspecified': '미지정', 'Male': '남자', 'Female': '여자'}[g]}</span>
+                                    <span>{genderMap[g]}</span>
                                 </label>
                             ))}
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="current-age" className="block text-sm font-medium text-slate-600 mb-2">현재 나이 (만)</label>
+                        <label htmlFor="current-age" className="block text-sm font-medium text-slate-600 mb-2">{t('currentAge')}</label>
                         <input
                             type="number"
                             id="current-age"
@@ -194,12 +200,12 @@ const App: React.FC = () => {
             </div>
 
             <div className="mt-8 border-t border-slate-200 pt-6">
-                 <h3 className="text-xl font-bold text-slate-700 mb-4">미래 나이 설정</h3>
-                 <p className="text-slate-500 mb-4">보고 싶은 아이의 미래 나이를 입력해주세요. (최대 4개)</p>
+                 <h3 className="text-xl font-bold text-slate-700 mb-4">{t('setFutureAge')}</h3>
+                 <p className="text-slate-500 mb-4">{t('setFutureAgeDesc')}</p>
                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                      {targetAges.map((age, index) => (
                          <div key={index}>
-                             <label htmlFor={`target-age-${index}`} className="block text-sm font-medium text-slate-600 mb-1">{index + 1}번째 나이</label>
+                             <label htmlFor={`target-age-${index}`} className="block text-sm font-medium text-slate-600 mb-1">{t('ageLabel', { index: index + 1 })}</label>
                              <input
                                  type="number"
                                  id={`target-age-${index}`}
@@ -230,22 +236,22 @@ const App: React.FC = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    생성 중...
+                    {t('generatingButton')}
                   </span>
-                ) : '미래 모습 생성하기'}
+                ) : t('generateButton')}
               </button>
             </div>
           </section>
 
           {error && (
             <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-8" role="alert">
-              <p className="font-bold">오류</p>
+              <p className="font-bold">{t('errorTitle')}</p>
               <p>{error}</p>
             </div>
           )}
 
           <section id="results-section">
-            <h2 className="text-2xl font-bold text-slate-700 mb-6 text-center">AI가 예측한 우리 아이의 미래</h2>
+            <h2 className="text-2xl font-bold text-slate-700 mb-6 text-center">{t('resultsTitle')}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {generatedImages.map((image, index) => (
                 <ResultCard key={index} age={image.age} src={image.src} isLoading={isLoading && !image.src} />
@@ -257,7 +263,7 @@ const App: React.FC = () => {
                         onClick={handleDownloadAll}
                         className="px-6 py-3 font-semibold text-indigo-600 bg-white border-2 border-indigo-600 rounded-full transition-all duration-300 ease-in-out hover:bg-indigo-50 transform hover:scale-105"
                     >
-                        이미지 모아서 다운로드
+                        {t('downloadAll')}
                     </button>
                 </div>
             )}
@@ -265,7 +271,7 @@ const App: React.FC = () => {
         </div>
       </main>
       <footer className="text-center py-6 mt-10 border-t border-slate-200">
-          <p className="text-slate-500 text-sm">Powered by Google Gemini</p>
+          <p className="text-slate-500 text-sm">{t('poweredBy')}</p>
       </footer>
     </div>
   );

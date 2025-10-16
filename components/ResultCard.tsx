@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { t } from '../i18n';
 
 interface ResultCardProps {
   age: number;
@@ -39,7 +39,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ age, src, isLoading }) =
             <button
               onClick={handleDownload}
               className="absolute top-2 right-2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-opacity-75"
-              aria-label={`Download image for age ${age}`}
+              aria-label={t('downloadAriaLabel', { age })}
             >
               <DownloadIcon />
             </button>
@@ -49,12 +49,12 @@ export const ResultCard: React.FC<ResultCardProps> = ({ age, src, isLoading }) =
              <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto h-12 w-12 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
              </svg>
-             <p className="mt-2 text-sm text-slate-500">생성 대기 중</p>
+             <p className="mt-2 text-sm text-slate-500">{t('resultCardWaiting')}</p>
            </div>
         )}
       </div>
       <div className="p-4 bg-slate-50 text-center">
-        <h3 className="font-bold text-lg text-indigo-600">{age}살</h3>
+        <h3 className="font-bold text-lg text-indigo-600">{t('resultCardAge', { age })}</h3>
       </div>
     </div>
   );

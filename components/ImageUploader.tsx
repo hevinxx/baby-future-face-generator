@@ -1,5 +1,5 @@
-
 import React, { useRef, useCallback } from 'react';
+import { t } from '../i18n';
 
 interface ImageUploaderProps {
   label: string;
@@ -47,7 +47,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ label, onImageUplo
         ) : (
           <div className="text-center">
             <PhotoIcon />
-            <p className="mt-2 text-sm text-slate-500">클릭하여 사진 선택</p>
+            <p className="mt-2 text-sm text-slate-500">{t('clickToSelect')}</p>
           </div>
         )}
       </div>
