@@ -1,3 +1,4 @@
+
 {
   "headerTitle": "Baby Future Face Generator",
   "headerSubtitle": "See your child's future face with AI!",
@@ -28,5 +29,30 @@
   "resultCardWaiting": "Waiting to generate...",
   "resultCardAge": "{age} years old",
   "downloadAriaLabel": "Download image for age {age}",
-  "clickToSelect": "Click to select a photo"
+  "clickToSelect": "Click to select a photo",
+  "howItWorksTitle": "How It Works in 3 Simple Steps",
+  "howItWorksStep1Title": "1. Upload Photos",
+  "howItWorksStep1Desc": "Select clear, front-facing photos of the mother, father, and the baby.",
+  "howItWorksStep2Title": "2. Set Ages",
+  "howItWorksStep2Desc": "Enter the baby's current age and the future ages you'd like to see.",
+  "howItWorksStep3Title": "3. Generate & See",
+  "howItWorksStep3Desc": "Our AI creates a vision of your child's future. Download and share the results!",
+  "featuresTitle": "Discover the Future",
+  "featuresItem1Title": "Advanced AI Technology",
+  "featuresItem1Desc": "We use a state-of-the-art AI model to blend features and project your child's growth realistically.",
+  "featuresItem2Title": "Multiple Age Projections",
+  "featuresItem2Desc": "See your child at different life stages, from toddler to young adult.",
+  "featuresItem3Title": "High-Quality Images",
+  "featuresItem3Desc": "Receive detailed, high-resolution images perfect for sharing with family and friends.",
+  "featuresItem4Title": "Privacy Focused",
+  "featuresItem4Desc": "Your privacy is our priority. Photos are processed securely and are not stored.",
+  "faqTitle": "Frequently Asked Questions",
+  "faqQ1": "How accurate is this?",
+  "faqA1": "Our AI provides a fun, artistic prediction based on the parents' and baby's features. It's for entertainment and should not be considered a scientific prediction. The results can be surprisingly realistic, but actual appearance will vary!",
+  "faqQ2": "What are the best practices for uploading photos?",
+  "faqA2": "For the best results, use clear, high-quality photos where faces are well-lit and looking directly at the camera. Avoid photos with sunglasses, hats, or extreme angles.",
+  "faqQ3": "Are my photos safe?",
+  "faqA3": "Yes. We process your photos only to generate the future-face images and do not store them on our servers. Your privacy is important to us.",
+  "privacyNote": "Your photos are used solely for the generation process and are not stored or shared.",
+  "footerText": "This tool is for entertainment purposes. The generated images are AI predictions and not a guarantee of future appearance. Your privacy is respected; photos are not stored."
 }

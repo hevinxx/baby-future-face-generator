@@ -1,3 +1,4 @@
+
 {
   "headerTitle": "우리 아이 미래 얼굴 예측",
   "headerSubtitle": "AI로 우리 아이의 미래 모습을 미리 만나보세요!",
@@ -28,5 +29,30 @@
   "resultCardWaiting": "생성 대기 중",
   "resultCardAge": "{age}살",
   "downloadAriaLabel": "{age}살 이미지 다운로드",
-  "clickToSelect": "클릭하여 사진 선택"
+  "clickToSelect": "클릭하여 사진 선택",
+  "howItWorksTitle": "3단계로 보는 사용 방법",
+  "howItWorksStep1Title": "1. 사진 업로드",
+  "howItWorksStep1Desc": "엄마, 아빠, 아기의 선명한 정면 사진을 선택해주세요.",
+  "howItWorksStep2Title": "2. 나이 설정",
+  "howItWorksStep2Desc": "아기의 현재 나이와 보고 싶은 미래 나이를 입력하세요.",
+  "howItWorksStep3Title": "3. 생성 및 확인",
+  "howItWorksStep3Desc": "AI가 아이의 미래 모습을 생성합니다. 결과를 다운로드하고 공유해보세요!",
+  "featuresTitle": "미래를 만나보세요",
+  "featuresItem1Title": "최첨단 AI 기술",
+  "featuresItem1Desc": "최신 AI 모델을 사용하여 얼굴 특징을 조합하고 아이의 성장을 사실적으로 예측합니다.",
+  "featuresItem2Title": "다양한 연령대 예측",
+  "featuresItem2Desc": "유아기부터 청소년기까지, 아이의 다양한 성장 단계를 확인해보세요.",
+  "featuresItem3Title": "고화질 이미지",
+  "featuresItem3Desc": "가족, 친구들과 공유하기 좋은 상세하고 선명한 고화질 이미지를 받아보세요.",
+  "featuresItem4Title": "개인정보 보호 중심",
+  "featuresItem4Desc": "개인정보 보호를 최우선으로 생각합니다. 사진은 안전하게 처리되며 저장되지 않습니다.",
+  "faqTitle": "자주 묻는 질문",
+  "faqQ1": "예측은 얼마나 정확한가요?",
+  "faqA1": "AI 예측은 부모와 아기의 특징을 기반으로 한 예술적이고 재미있는 결과물입니다. 과학적인 예측이 아니며 오락 목적으로 즐겨주세요. 결과는 놀라울 정도로 사실적일 수 있지만, 실제 모습과는 다를 수 있습니다!",
+  "faqQ2": "어떤 사진을 업로드해야 결과가 좋은가요?",
+  "faqA2": "가장 좋은 결과를 얻으려면, 얼굴이 정면을 향하고 조명이 밝은 선명한 고화질 사진을 사용해주세요. 선글라스나 모자를 쓰거나, 과도한 각도의 사진은 피하는 것이 좋습니다.",
+  "faqQ3": "제 사진은 안전한가요?",
+  "faqA3": "네. 업로드된 사진은 오직 미래 얼굴 이미지를 생성하는 데에만 사용되며, 처리 완료 후 서버에 저장되지 않습니다. 사용자의 개인정보를 소중히 다룹니다.",
+  "privacyNote": "업로드된 사진은 이미지 생성 목적으로만 사용되며, 저장되거나 공유되지 않습니다.",
+  "footerText": "이 도구는 오락용입니다. 생성된 이미지는 AI의 예측이며 실제 미래 모습을 보장하지 않습니다. 사용자의 개인정보는 존중되며, 사진은 저장되지 않습니다."
 }
